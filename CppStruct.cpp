@@ -5,24 +5,40 @@
 
 using namespace std;
 
-enum { small = 0, big, flower, star, fly };
+enum
+{
+    small = 0,
+    big,
+    flower,
+    star,
+    fly
+};
+
 
 struct Mario
 {
     enum
     {
-	small = 0,
-	big,
-	flower,
-	star,
-	fly
+	down  = -10,
+	up    = 10,
     };
     int age;	    ///<
     char status;    ///<마리오의 상태.
     int speed;	    ///<
-
+    void speedAccel(bool upAndDown);
     void printMarioStatus();
 };
+
+void Mario::speedAccel(bool upAndDown)
+{
+    if (upAndDown) {
+	speed += up;
+    }
+    else {
+	speed += down;
+    }
+    cout << "current speed : " << speed << endl;
+}
 
 void Mario::printMarioStatus()
 {
@@ -38,11 +54,10 @@ int main(void)
     p1.status = big;
     p1.speed = SPEED_MIN;
     
-    p2.age = 25;
-    p2.status = fly;
-    p2.speed = SPEED_MAX;
-   
     p1.printMarioStatus();
-    p2.printMarioStatus();
+    p1.speedAccel(true);
+    p1.printMarioStatus();
+    p1.speedAccel(false);
+    p1.printMarioStatus();
     return 0;
 }
