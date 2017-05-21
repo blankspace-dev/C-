@@ -12,7 +12,7 @@ void PrintNums(char* dataType, ...)
 
     while (dataType[count] != '\0') {
 	switch (dataType[count]) {
-	case 'i' :
+	case 'p' :
 	    cout << "args : " << va_arg(ap, int) << " ";
 	    break;
 	case 'c' :
@@ -35,9 +35,9 @@ void PrintNums(char* dataType, ...)
 
 int main(void)
 {
-    PrintNums("i", 1);
-    PrintNums("ic", 1, 's');
-    PrintNums("sic", "Variable Ex", 2, 'h');
-    PrintNums("sdci", "Variable Ex", 2.128923, 'h', 4);
+    PrintNums("p", 1);
+    PrintNums("pc", 1, 's');
+    PrintNums("spc", "Variable Ex", 2, 'h');
+    PrintNums("sdcp", "Variable Ex", 2.128923, 'h', 4);
     return 0;
 }
